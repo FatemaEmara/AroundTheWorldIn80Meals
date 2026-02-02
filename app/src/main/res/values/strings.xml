@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">AroundTheWorldIn80Meals</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="around_the_world">Around The World</string>
+    <string name="in_80_meals">In 80 Meals</string>
 </resources>
