@@ -3,6 +3,27 @@
     <style name="Base.Theme.AroundTheWorldIn80Meals" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryContainer">@color/colorPrimaryContainer</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+
+
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorTertiary">@color/colorTertiary</item>
+        <item name="colorOnSecondary">@color/colorOnSecondary</item>
+
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="colorSurface">@color/colorSurface1</item>
+        <item name="colorSurfaceVariant">@color/colorSurface2</item>
+
+
+        <item name="textAppearanceHeadlineLarge">@style/TextDisplayLarge</item>
+        <item name="textAppearanceHeadlineMedium">@style/TextDisplayMedium</item>
+        <item name="textAppearanceBodyLarge">@style/TextBodyLarge</item>
+        <item name="textAppearanceBodyMedium">@style/TextBodyMedium</item>
+        <item name="textAppearanceButton">@style/TextButtonCustom</item>
+
+
     </style>
 
     <style name="Theme.AroundTheWorldIn80Meals" parent="Base.Theme.AroundTheWorldIn80Meals" />
