@@ -4,4 +4,24 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="around_the_world">Around The World</string>
     <string name="in_80_meals">In 80 Meals</string>
+    <string name="join_us">Join Us</string>
+    <string name="start_your_culinary_journey_today">Start your culinary journey today</string>
+    <string name="email_address">Email Address</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="or_continue_with">Or continue with</string>
+    <string name="google">Google</string>
+    <string name="guest">Guest</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="log_in">Log In</string>
+    <string name="welcome_to_80_meals">Welcome To 80 Meals</string>
+    <string name="meal_planning_made_easy_discover_delicious_recipes_from_around_the_world">Meal planning made easy. Discover delicious recipes from around the world.</string>
+    <string name="next">Next</string>
+    <string name="skip">Skip</string>
+    <string name="discover_new_flavors">Discover New Flavors</string>
+    <string name="explore_meals_by_country_ingredient_and_category_expand_your_palate">Explore meals by country, ingredient, and category. Expand your palate</string>
+    <string name="plan_your_week">Plan Your Week</string>
+    <string name="save_your_favorites_and_schedule_your_meals_with_our_intuitive_planner">Save Your favorites and schedule your meals with our intuitive planner.</string>
+    <string name="get_started">Get Started</string>
 </resources>
