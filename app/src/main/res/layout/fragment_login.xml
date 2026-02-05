@@ -60,7 +60,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
-        android:hint="Email Address"
+        android:hint="@string/email_address"
         app:boxBackgroundColor="@android:color/white"
         app:boxCornerRadiusBottomEnd="12dp"
         app:boxCornerRadiusBottomStart="12dp"
@@ -72,7 +72,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvSubtitle">
-
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etEmail"
             style="@style/TextBodyMedium"
@@ -82,7 +81,6 @@
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
             android:textColor="@color/colorTextPrimary" />
-
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout

@@ -24,4 +24,7 @@
     <string name="plan_your_week">Plan Your Week</string>
     <string name="save_your_favorites_and_schedule_your_meals_with_our_intuitive_planner">Save Your favorites and schedule your meals with our intuitive planner.</string>
     <string name="get_started">Get Started</string>
+    <string name="view_recipe">View Recipe</string>
+    <string name="categories">Categories</string>
+    <string name="see_all">See All</string>
 </resources>
