@@ -27,53 +27,93 @@ public class Meal implements Parcelable {
     private String strIngredient;
     private String date;
     private boolean isFavorite;
-    @SerializedName("strIngredient1") private String mealIng1;
-    @SerializedName("strIngredient2") private String mealIng2;
-    @SerializedName("strIngredient3") private String mealIng3;
-    @SerializedName("strIngredient4") private String mealIng4;
-    @SerializedName("strIngredient5") private String mealIng5;
-    @SerializedName("strIngredient6") private String mealIng6;
-    @SerializedName("strIngredient7") private String mealIng7;
-    @SerializedName("strIngredient8") private String mealIng8;
-    @SerializedName("strIngredient9") private String mealIng9;
-    @SerializedName("strIngredient10") private String mealIng10;
-    @SerializedName("strIngredient11") private String mealIng11;
-    @SerializedName("strIngredient12") private String mealIng12;
-    @SerializedName("strIngredient13") private String mealIng13;
-    @SerializedName("strIngredient14") private String mealIng14;
-    @SerializedName("strIngredient15") private String mealIng15;
-    @SerializedName("strIngredient16") private String mealIng16;
-    @SerializedName("strIngredient17") private String mealIng17;
-    @SerializedName("strIngredient18") private String mealIng18;
-    @SerializedName("strIngredient19") private String mealIng19;
-    @SerializedName("strIngredient20") private String mealIng20;
+    @SerializedName("strIngredient1")
+    private String mealIng1;
+    @SerializedName("strIngredient2")
+    private String mealIng2;
+    @SerializedName("strIngredient3")
+    private String mealIng3;
+    @SerializedName("strIngredient4")
+    private String mealIng4;
+    @SerializedName("strIngredient5")
+    private String mealIng5;
+    @SerializedName("strIngredient6")
+    private String mealIng6;
+    @SerializedName("strIngredient7")
+    private String mealIng7;
+    @SerializedName("strIngredient8")
+    private String mealIng8;
+    @SerializedName("strIngredient9")
+    private String mealIng9;
+    @SerializedName("strIngredient10")
+    private String mealIng10;
+    @SerializedName("strIngredient11")
+    private String mealIng11;
+    @SerializedName("strIngredient12")
+    private String mealIng12;
+    @SerializedName("strIngredient13")
+    private String mealIng13;
+    @SerializedName("strIngredient14")
+    private String mealIng14;
+    @SerializedName("strIngredient15")
+    private String mealIng15;
+    @SerializedName("strIngredient16")
+    private String mealIng16;
+    @SerializedName("strIngredient17")
+    private String mealIng17;
+    @SerializedName("strIngredient18")
+    private String mealIng18;
+    @SerializedName("strIngredient19")
+    private String mealIng19;
+    @SerializedName("strIngredient20")
+    private String mealIng20;
 
-    @SerializedName("strMeasure1") private String mealMeas1;
-    @SerializedName("strMeasure2") private String mealMeas2;
-    @SerializedName("strMeasure3") private String mealMeas3;
-    @SerializedName("strMeasure4") private String mealMeas4;
-    @SerializedName("strMeasure5") private String mealMeas5;
-    @SerializedName("strMeasure6") private String mealMeas6;
-    @SerializedName("strMeasure7") private String mealMeas7;
-    @SerializedName("strMeasure8") private String mealMeas8;
-    @SerializedName("strMeasure9") private String mealMeas9;
-    @SerializedName("strMeasure10") private String mealMeas10;
-    @SerializedName("strMeasure11") private String mealMeas11;
-    @SerializedName("strMeasure12") private String mealMeas12;
-    @SerializedName("strMeasure13") private String mealMeas13;
-    @SerializedName("strMeasure14") private String mealMeas14;
-    @SerializedName("strMeasure15") private String mealMeas15;
-    @SerializedName("strMeasure16") private String mealMeas16;
-    @SerializedName("strMeasure17") private String mealMeas17;
-    @SerializedName("strMeasure18") private String mealMeas18;
-    @SerializedName("strMeasure19") private String mealMeas19;
-    @SerializedName("strMeasure20") private String mealMeas20;
+    @SerializedName("strMeasure1")
+    private String mealMeas1;
+    @SerializedName("strMeasure2")
+    private String mealMeas2;
+    @SerializedName("strMeasure3")
+    private String mealMeas3;
+    @SerializedName("strMeasure4")
+    private String mealMeas4;
+    @SerializedName("strMeasure5")
+    private String mealMeas5;
+    @SerializedName("strMeasure6")
+    private String mealMeas6;
+    @SerializedName("strMeasure7")
+    private String mealMeas7;
+    @SerializedName("strMeasure8")
+    private String mealMeas8;
+    @SerializedName("strMeasure9")
+    private String mealMeas9;
+    @SerializedName("strMeasure10")
+    private String mealMeas10;
+    @SerializedName("strMeasure11")
+    private String mealMeas11;
+    @SerializedName("strMeasure12")
+    private String mealMeas12;
+    @SerializedName("strMeasure13")
+    private String mealMeas13;
+    @SerializedName("strMeasure14")
+    private String mealMeas14;
+    @SerializedName("strMeasure15")
+    private String mealMeas15;
+    @SerializedName("strMeasure16")
+    private String mealMeas16;
+    @SerializedName("strMeasure17")
+    private String mealMeas17;
+    @SerializedName("strMeasure18")
+    private String mealMeas18;
+    @SerializedName("strMeasure19")
+    private String mealMeas19;
+    @SerializedName("strMeasure20")
+    private String mealMeas20;
 
-    public Meal(){
+    public Meal() {
 
     }
 
-    public Meal( int uniqueId, Long idMeal, String mealName, String mealPhoto, String mealCate, String mealArea, String mealInst,
+    public Meal(int uniqueId, Long idMeal, String mealName, String mealPhoto, String mealCate, String mealArea, String mealInst,
                 String strYoutube, String strIngredient, String date, boolean isFavorite,
                 String mealIng1, String mealIng2, String mealIng3, String mealIng4, String mealIng5,
                 String mealIng6, String mealIng7, String mealIng8, String mealIng9, String mealIng10,
