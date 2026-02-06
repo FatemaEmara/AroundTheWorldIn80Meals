@@ -27,4 +27,6 @@
     <string name="view_recipe">View Recipe</string>
     <string name="categories">Categories</string>
     <string name="see_all">See All</string>
+    <string name="discover">Discover</string>
+    <string name="search_recipes_ingredients">Search recipes ingredients...</string>
 </resources>
