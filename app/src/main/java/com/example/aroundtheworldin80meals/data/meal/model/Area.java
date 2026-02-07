@@ -1,7 +1,10 @@
 package com.example.aroundtheworldin80meals.data.meal.model;
 
 
+import com.google.gson.annotations.SerializedName;
+
 public class Area {
+    @SerializedName("strArea")
     private String name;
     private int flag;
 
