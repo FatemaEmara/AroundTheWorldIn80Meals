@@ -6,10 +6,14 @@ import androidx.annotation.Nullable;
 
 public class FlagUtils {
 
-    @NonNull
+
     public static String getFlagUrl(@Nullable String title) {
-        return title == null ? ""
-                : "https://www.themealdb.com/images/icons/flags/big/128/" + getCountryCode(title) + ".png";
+        if (title == null) return "";
+
+        String countryCode = getCountryCode(title);
+        String size = countryCode.equals("tn") ? "64" : "128";
+
+        return "https://www.themealdb.com/images/icons/flags/big/" + size + "/" + countryCode + ".png";
     }
 
     @NonNull
