@@ -1,5 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.navigation.safeargs)
+
 }
 
 android {
@@ -53,6 +55,7 @@ dependencies {
     implementation("io.reactivex.rxjava3:rxandroid:3.0.2")
     implementation("com.github.akarnokd:rxjava3-retrofit-adapter:3.0.0")
     implementation("androidx.room:room-rxjava3:2.8.4")
-
+    implementation(libs.navigation.fragment)
+    implementation(libs.navigation.ui)
 
 }

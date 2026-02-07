@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fillViewport="true"
     android:background="@color/colorBackground"
-    tools:context=".HomeFragment">
+    tools:context=".presentation.home.view.HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -83,7 +83,7 @@
 
 
                 <TextView
-                    android:id="@+id/tvMealTitle"
+                    android:id="@+id/tvRandomMealTitle"
                     style="@style/TextDisplaySmall"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -91,22 +91,22 @@
                     android:layout_marginEnd="16dp"
                     android:text="Spicy mexican tacos"
                     android:textColor="@color/colorTextPrimary"
-                    app:layout_constraintEnd_toStartOf="@id/ivMealImage"
+                    app:layout_constraintEnd_toStartOf="@id/ivRandomMealImage"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/tvMealLabel" />
 
 
                 <TextView
-                    android:id="@+id/tvMealDescription"
+                    android:id="@+id/tvRandomMealDescription"
                     style="@style/TextBodyMedium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
-                    android:text="Try this authentic recipe with a twist of lime"
+                    android:text="@string/try_this_authentic_recipe"
                     android:textColor="@color/colorTextSecondary"
-                    app:layout_constraintEnd_toEndOf="@id/tvMealTitle"
+                    app:layout_constraintEnd_toEndOf="@id/tvRandomMealTitle"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvMealTitle" />
+                    app:layout_constraintTop_toBottomOf="@id/tvRandomMealTitle" />
 
 
                 <com.google.android.material.button.MaterialButton
@@ -122,11 +122,11 @@
                     android:textColor="@color/colorOnPrimary"
                     app:cornerRadius="24dp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvMealDescription" />
+                    app:layout_constraintTop_toBottomOf="@id/tvRandomMealDescription" />
 
 
                 <ImageView
-                    android:id="@+id/ivMealImage"
+                    android:id="@+id/ivRandomMealImage"
                     android:layout_width="140dp"
                     android:layout_height="140dp"
                     android:scaleType="centerCrop"
@@ -147,14 +147,14 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="32dp"
-            android:text="@string/categories"
+            android:text="Countries"
             android:textColor="@color/colorTextPrimary"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/cardMealOfDay" />
+            app:layout_constraintTop_toBottomOf="@id/cardMealOfDay"/>
 
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvCategories"
+            android:id="@+id/rvAreas"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -167,7 +167,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvCategoriesTitle"
             tools:itemCount="5"
-            tools:listitem="" />
+            tools:listitem="@layout/area_item" />
 
 
         <TextView
@@ -178,11 +178,11 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="32dp"
             android:layout_marginEnd="16dp"
-            android:text="Popular Now"
+            android:text="Categories"
             android:textColor="@color/colorTextPrimary"
             app:layout_constraintEnd_toStartOf="@id/tvSeeAll"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/rvCategories" />
+            app:layout_constraintTop_toBottomOf="@id/rvAreas" />
 
         <TextView
             android:id="@+id/tvSeeAll"
@@ -200,7 +200,7 @@
             app:layout_constraintTop_toTopOf="@id/tvPopularTitle" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvPopularRecipes"
+            android:id="@+id/rvAllCategoriesRecipes"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
@@ -213,7 +213,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvPopularTitle"
             tools:itemCount="3"
-            tools:listitem="@layout/recipe_home_item" />
+            tools:listitem="@layout/category_item" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
