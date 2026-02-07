@@ -3,7 +3,9 @@ package com.example.aroundtheworldin80meals.data.meal.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Area {
+import java.io.Serializable;
+
+public class Area implements Serializable  {
     @SerializedName("strArea")
     private String name;
     private int flag;

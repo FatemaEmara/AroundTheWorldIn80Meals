@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -18,12 +19,15 @@ import java.util.List;
 
 import io.reactivex.rxjava3.annotations.NonNull;
 
+
 public class AreaAdapter extends RecyclerView.Adapter<AreaAdapter.ViewHolder> {
 
     private List<Area> areas = new ArrayList<>();
     private OnAreaClickListener listener;
+    private Fragment fragment;
 
-    public AreaAdapter(OnAreaClickListener listener) {
+    public AreaAdapter(Fragment fragment, OnAreaClickListener listener) {
+        this.fragment = fragment;
         this.listener = listener;
     }
 
@@ -67,9 +71,12 @@ public class AreaAdapter extends RecyclerView.Adapter<AreaAdapter.ViewHolder> {
             String flagUrl = FlagUtils.getFlagUrl(area.getName());
             if (flagUrl != null && !flagUrl.isEmpty() &&
                     !flagUrl.equals("https://www.themealdb.com/images/icons/flags/big/128/unknown.png")) {
-                Glide.with(itemView)
-                        .load(flagUrl)
-                        .into(flag);
+                if (fragment.isAdded()) {
+                    Glide.with(fragment)
+                            .load(flagUrl)
+                            .into(flag);
+                }
+
                 areaName.setText(area.getName());
             }
 

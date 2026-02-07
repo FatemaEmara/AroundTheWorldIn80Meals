@@ -3,7 +3,9 @@ package com.example.aroundtheworldin80meals.data.meal.model;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Category {
+import java.io.Serializable;
+
+public class Category implements Serializable {
     @SerializedName("strCategory")
     private String categoryName;
     @SerializedName("strCategoryThumb")

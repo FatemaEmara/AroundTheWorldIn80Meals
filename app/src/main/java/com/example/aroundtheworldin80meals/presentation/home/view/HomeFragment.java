@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.fragment.NavHostFragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -56,8 +57,8 @@ public class HomeFragment extends Fragment
         randomMealImage = view.findViewById(R.id.ivRandomMealImage);
         randomMealName = view.findViewById(R.id.tvRandomMealTitle);
 
-        categoryAdapter = new CategoryAdapter(this);
-        areaAdapter = new AreaAdapter(this);
+        categoryAdapter = new CategoryAdapter(this, this);
+        areaAdapter = new AreaAdapter(this, this);
 
         categoriesRecycler.setLayoutManager(
                 new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false)
@@ -124,11 +125,23 @@ public class HomeFragment extends Fragment
 
     @Override
     public void onCategoryClick(String categoryName) {
+        Bundle bundle = new Bundle();
+        bundle.putString("filterType", "Category");
+        bundle.putString("filterValue", categoryName);
+
+        NavHostFragment.findNavController(this)
+                .navigate(R.id.action_homeFragment_to_searchFragment, bundle);
 
     }
 
     @Override
     public void onAreaClick(String areaName) {
+        Bundle bundle = new Bundle();
+        bundle.putString("filterType", "AREA");
+        bundle.putString("filterValue", areaName);
+
+        NavHostFragment.findNavController(this)
+                .navigate(R.id.action_homeFragment_to_searchFragment, bundle);
     }
 }
 

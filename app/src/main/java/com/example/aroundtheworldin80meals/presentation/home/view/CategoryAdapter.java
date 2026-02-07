@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -19,12 +20,14 @@ import io.reactivex.rxjava3.annotations.NonNull;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHolder> {
 
-    private List<Category> categories ;
+    private List<Category> categories;
     private OnCategoryClickListener listener;
+    private Fragment fragment;
 
-    public CategoryAdapter(OnCategoryClickListener listener) {
+    public CategoryAdapter(Fragment fragment, OnCategoryClickListener listener) {
         categories = new ArrayList<>();
         this.listener = listener;
+        this.fragment = fragment;
     }
 
     public void setCategories(List<Category> categories) {
@@ -47,7 +50,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
     }
 
     @Override
-    public int getItemCount()  {
+    public int getItemCount() {
         return categories != null ? categories.size() : 0;
     }
 
@@ -67,9 +70,11 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         void bind(Category category) {
             name.setText(category.getCategoryName());
             description.setText(category.getCategoryDescription());
-            Glide.with(itemView)
-                    .load(category.getCategoryImage())
-                    .into(image);
+            if (fragment.isAdded()) {
+                Glide.with(fragment)
+                        .load(category.getCategoryImage())
+                        .into(image);
+            }
 
             itemView.setOnClickListener(v ->
                     listener.onCategoryClick(category.getCategoryName()));
