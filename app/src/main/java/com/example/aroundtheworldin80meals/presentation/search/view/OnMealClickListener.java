@@ -1,6 +1,8 @@
 package com.example.aroundtheworldin80meals.presentation.search.view;
 
+import com.example.aroundtheworldin80meals.data.meal.model.Meal;
+
 public interface OnMealClickListener {
-    void onMealClick(String mealName);
+    void addMealToFavorite(Meal meal);
 
 }

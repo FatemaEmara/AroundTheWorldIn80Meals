@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.rxjava3.core.Completable;
+import io.reactivex.rxjava3.core.Flowable;
 import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.core.Single;
 
@@ -92,7 +93,7 @@ public class MealRepository {
 
     }
 
-    public Observable<List<Meal>> getFavoriteMeals() {
+    public Flowable<List<Meal>> getFavoriteMeals() {
         return mealsLocalDataSource.getFavoriteMeals();
     }
 

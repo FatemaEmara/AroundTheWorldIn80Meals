@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -30,7 +31,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class SearchFragment extends Fragment implements OnAreaClickListener, OnCategoryClickListener, OnIngredientClickListener, SearchView {
+public class SearchFragment extends Fragment implements OnMealClickListener, OnAreaClickListener, OnCategoryClickListener, OnIngredientClickListener, SearchView {
 
 
     private RecyclerView ingredientsRecycler;
@@ -65,9 +66,9 @@ public class SearchFragment extends Fragment implements OnAreaClickListener, OnC
                 this);
 
         ingredientsRecycler.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        mealAdapter = new MealAdapter(this, mealName -> {
 
-        });
+        mealAdapter = new MealAdapter(this);
+
         ingredientsRecycler.setAdapter(searchItemAdapter);
         presenter = new SearchPresenterImp(requireActivity().getApplication(), this);
         presenter.getIngredients();
@@ -222,4 +223,10 @@ public class SearchFragment extends Fragment implements OnAreaClickListener, OnC
     }
 
 
+    @Override
+    public void addMealToFavorite(Meal meal) {
+        presenter.addMealToFavorite(meal);
+        Toast.makeText(getContext(), "Product added to favorites", Toast.LENGTH_SHORT).show();
+
+    }
 }
