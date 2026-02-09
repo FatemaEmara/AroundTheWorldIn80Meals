@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
             return insets;
         });
 
+
         NavHostFragment navHostFragment =
                 (NavHostFragment) getSupportFragmentManager()
                         .findFragmentById(R.id.nav_host);
