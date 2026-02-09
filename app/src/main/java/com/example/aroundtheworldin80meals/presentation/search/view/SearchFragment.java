@@ -57,28 +57,19 @@ public class SearchFragment extends Fragment implements OnAreaClickListener, OnC
 
         //progressBar = view.findViewById(R.id.progress_circular);
         //errorText = view.findViewById(R.id.tv_error);
-
-
         etSearch = view.findViewById(R.id.etSearch);
         ingredientsRecycler = view.findViewById(R.id.rvAllCategories);
-
-
         searchItemAdapter = new SearchItemAdapter(this,
                 this,
                 this,
                 this);
 
         ingredientsRecycler.setLayoutManager(new GridLayoutManager(getContext(), 2));
-
-
         mealAdapter = new MealAdapter(this, mealName -> {
+
         });
-
-
         ingredientsRecycler.setAdapter(searchItemAdapter);
-
         presenter = new SearchPresenterImp(requireActivity().getApplication(), this);
-
         presenter.getIngredients();
 
         EditText searchEditText = view.findViewById(R.id.etSearch);
