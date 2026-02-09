@@ -2,6 +2,7 @@ package com.example.aroundtheworldin80meals.data.meal;
 
 import android.app.Application;
 
+import com.example.aroundtheworldin80meals.data.meal.local.MealsLocalDataSource;
 import com.example.aroundtheworldin80meals.data.meal.model.Area;
 import com.example.aroundtheworldin80meals.data.meal.model.AreaResponse;
 import com.example.aroundtheworldin80meals.data.meal.model.Category;
@@ -14,13 +15,18 @@ import com.example.aroundtheworldin80meals.data.meal.remote.MealRemoteDataSource
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.rxjava3.core.Completable;
+import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.core.Single;
 
 public class MealRepository {
     MealRemoteDataSource mealRemoteDataSource;
 
+    MealsLocalDataSource mealsLocalDataSource;
+
     public MealRepository(Application application) {
         this.mealRemoteDataSource = new MealRemoteDataSource();
+        this.mealsLocalDataSource = new MealsLocalDataSource(application);
 
     }
 
@@ -76,5 +82,19 @@ public class MealRepository {
         return mealRemoteDataSource.filterByIngredient(ingredient)
                 .map(MealResponse::getMeals);
     }
+
+    public Completable addMealToFavorite(Meal meal) {
+        return mealsLocalDataSource.insertFavoriteMeal(meal);
+    }
+
+    public Completable deleteMealFromFavorite(Meal meal) {
+        return mealsLocalDataSource.deleteFavoriteMeal(meal);
+
+    }
+
+    public Observable<List<Meal>> getFavoriteMeals() {
+        return mealsLocalDataSource.getFavoriteMeals();
+    }
+
 
 }

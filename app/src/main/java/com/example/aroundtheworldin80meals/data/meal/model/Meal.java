@@ -5,13 +5,19 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 
 import com.google.gson.annotations.SerializedName;
 
+@Entity(tableName = "meals")
 public class Meal implements Parcelable {
 
+
     private int uniqueId;
+    @PrimaryKey
+    @NonNull
     private Long idMeal;
     @SerializedName("strMeal")
     private String mealName;
