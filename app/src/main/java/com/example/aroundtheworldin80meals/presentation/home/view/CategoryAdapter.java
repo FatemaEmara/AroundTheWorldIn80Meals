@@ -68,16 +68,16 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
         }
 
         void bind(Category category) {
-            name.setText(category.getCategoryName());
+            name.setText(category.getName());
             description.setText(category.getCategoryDescription());
             if (fragment.isAdded()) {
                 Glide.with(fragment)
-                        .load(category.getCategoryImage())
+                        .load(category.getThumb())
                         .into(image);
             }
 
             itemView.setOnClickListener(v ->
-                    listener.onCategoryClick(category.getCategoryName()));
+                    listener.onCategoryClick(category.getName()));
         }
     }
 }

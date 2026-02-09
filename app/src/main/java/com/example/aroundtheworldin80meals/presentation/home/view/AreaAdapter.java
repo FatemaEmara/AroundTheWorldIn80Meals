@@ -68,7 +68,7 @@ public class AreaAdapter extends RecyclerView.Adapter<AreaAdapter.ViewHolder> {
         void bind(Area area) {
 
 
-            String flagUrl = FlagUtils.getFlagUrl(area.getName());
+            String flagUrl = FlagUtils.getThumb(area.getName());
             if (flagUrl != null && !flagUrl.isEmpty() &&
                     !flagUrl.equals("https://www.themealdb.com/images/icons/flags/big/128/unknown.png")) {
                 if (fragment.isAdded()) {

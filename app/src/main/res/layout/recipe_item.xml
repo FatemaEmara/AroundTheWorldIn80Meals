@@ -17,7 +17,7 @@
 
 
         <ImageView
-            android:id="@+id/ivRecipeImage"
+            android:id="@+id/ivMealRecipeImage"
             android:layout_width="0dp"
             android:layout_height="180dp"
             android:scaleType="centerCrop"
@@ -35,7 +35,7 @@
             android:padding="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/ivRecipeImage">
+            app:layout_constraintTop_toBottomOf="@id/ivMealRecipeImage">
 
 
             <LinearLayout
@@ -47,7 +47,7 @@
 
 
                 <TextView
-                    android:id="@+id/tvCategory"
+                    android:id="@+id/tvMealRecipeArea"
                     style="@style/TextBodyMedium"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
@@ -81,7 +81,7 @@
 
 
             <TextView
-                android:id="@+id/tvRecipeTitle"
+                android:id="@+id/tvMealRecipeTitle"
                 style="@style/TextDisplaySmall"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -111,14 +111,14 @@
                     app:tint="@color/colorTextSecondary" />
 
 
-                <TextView
-                    android:id="@+id/tvTime"
-                    style="@style/TextBodyMedium"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="35 min"
-                    android:textColor="@color/colorTextSecondary"
-                    android:textSize="13sp" />
+<!--                <TextView-->
+<!--                    android:id="@+id/tvTime"-->
+<!--                    style="@style/TextBodyMedium"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="35 min"-->
+<!--                    android:textColor="@color/colorTextSecondary"-->
+<!--                    android:textSize="13sp" />-->
 
 
                 <View

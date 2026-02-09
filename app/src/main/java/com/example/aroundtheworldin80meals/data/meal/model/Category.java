@@ -19,7 +19,7 @@ public class Category implements Serializable {
         CategoryDescription = categoryDescription;
     }
 
-    public String getCategoryName() {
+    public String getName() {
         return categoryName;
     }
 
@@ -27,7 +27,7 @@ public class Category implements Serializable {
         this.categoryName = categoryName;
     }
 
-    public String getCategoryImage() {
+    public String getThumb() {
         return categoryImage;
     }
 

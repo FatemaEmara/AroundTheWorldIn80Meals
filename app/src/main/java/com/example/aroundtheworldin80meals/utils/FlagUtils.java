@@ -7,7 +7,7 @@ import androidx.annotation.Nullable;
 public class FlagUtils {
 
 
-    public static String getFlagUrl(@Nullable String title) {
+    public static String getThumb(@Nullable String title) {
         if (title == null) return "";
 
         String countryCode = getCountryCode(title);

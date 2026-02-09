@@ -31,4 +31,6 @@
     <string name="search_recipes_ingredients">Search recipes ingredients...</string>
     <string name="favorites">Favorites</string>
     <string name="try_this_authentic_recipe">Try this authentic recipe.</string>
+    <string name="countries">Countries</string>
+    <string name="ingredients">Ingredients</string>
 </resources>
