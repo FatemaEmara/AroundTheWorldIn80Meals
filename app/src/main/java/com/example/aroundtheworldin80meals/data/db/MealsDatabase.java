@@ -13,7 +13,7 @@ import com.example.aroundtheworldin80meals.data.meal.model.Meal;
 public abstract class MealsDatabase extends RoomDatabase {
     private static MealsDatabase instance = null;
 
-    public abstract MealsDAO getMealsDAO();
+    public abstract MealDao getMealsDAO();
 
     public static MealsDatabase getInstance(Context context) {
         if (instance == null) {

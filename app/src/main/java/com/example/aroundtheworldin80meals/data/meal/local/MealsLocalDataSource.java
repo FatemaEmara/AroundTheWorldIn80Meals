@@ -2,22 +2,23 @@ package com.example.aroundtheworldin80meals.data.meal.local;
 
 import android.content.Context;
 
-import androidx.room.Dao;
+import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
+import androidx.room.Query;
 
 import com.example.aroundtheworldin80meals.data.db.MealsDatabase;
-import com.example.aroundtheworldin80meals.data.db.MealsDAO;
+import com.example.aroundtheworldin80meals.data.db.MealDao;
 import com.example.aroundtheworldin80meals.data.meal.model.Meal;
 
 import java.util.List;
 
 import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.core.Flowable;
-import io.reactivex.rxjava3.core.Observable;
 
 
 public class MealsLocalDataSource {
 
-    MealsDAO mealsDAO;
+    MealDao mealsDAO;
 
     public MealsLocalDataSource(Context context) {
         this.mealsDAO = MealsDatabase.getInstance(context).getMealsDAO();
@@ -37,4 +38,20 @@ public class MealsLocalDataSource {
         return mealsDAO.deleteFavMealById(meal.getIdMeal());
 
     }
+
+    public Flowable<List<Meal>> getPlannedMeals(String date) {
+        return mealsDAO.getPlannedMealsByDate(date);
+    }
+
+    public Completable insertPlannedMeal(Meal meal) {
+        return mealsDAO.insertPlannedMeal(meal);
+
+    }
+
+    public Completable deletePlannedMeal(Meal meal) {
+        return mealsDAO.deletePlannedMealById(meal.getIdMeal(), meal.getDate());
+
+    }
+
+
 }

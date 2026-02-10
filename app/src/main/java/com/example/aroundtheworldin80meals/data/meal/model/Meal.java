@@ -39,6 +39,7 @@ public class Meal implements Parcelable {
     private String strIngredient;
     private String date;
     private boolean isFavorite;
+    private boolean isPlanned;
     @SerializedName("strIngredient1")
     private String mealIng1;
     @SerializedName("strIngredient2")

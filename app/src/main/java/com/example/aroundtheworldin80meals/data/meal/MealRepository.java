@@ -97,5 +97,18 @@ public class MealRepository {
         return mealsLocalDataSource.getFavoriteMeals();
     }
 
+    public Completable addPlannedMeal(Meal meal) {
+        return mealsLocalDataSource.insertPlannedMeal(meal);
+    }
+
+    public Completable deletePlannedMeal(Meal meal) {
+        return mealsLocalDataSource.deletePlannedMeal(meal);
+
+    }
+
+    public Flowable<List<Meal>> getPlannedMeals(String date) {
+        return mealsLocalDataSource.getPlannedMeals(date);
+    }
+
 
 }

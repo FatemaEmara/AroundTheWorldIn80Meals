@@ -1,4 +1,4 @@
-package com.example.aroundtheworldin80meals.presentation.search.view;
+package com.example.aroundtheworldin80meals.presentation.calendar.view;
 
 
 import android.view.LayoutInflater;
@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.aroundtheworldin80meals.R;
 import com.example.aroundtheworldin80meals.data.meal.model.Meal;
+import com.example.aroundtheworldin80meals.presentation.search.view.OnMealClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +20,7 @@ import java.util.List;
 import io.reactivex.rxjava3.annotations.NonNull;
 
 public class MealAdapter extends
-        RecyclerView.Adapter<com.example.aroundtheworldin80meals.presentation.search.view.MealAdapter.ViewHolder> {
+        RecyclerView.Adapter<MealAdapter.ViewHolder> {
 
     private List<Meal> meals;
     private OnMealClickListener listener;
@@ -36,14 +37,14 @@ public class MealAdapter extends
 
     @NonNull
     @Override
-    public com.example.aroundtheworldin80meals.presentation.search.view.MealAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MealAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.recipe_item, parent, false);
-        return new com.example.aroundtheworldin80meals.presentation.search.view.MealAdapter.ViewHolder(view);
+        return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull com.example.aroundtheworldin80meals.presentation.search.view.MealAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MealAdapter.ViewHolder holder, int position) {
         Meal meal = meals.get(position);
         holder.bind(meal);
     }
@@ -75,11 +76,10 @@ public class MealAdapter extends
             Glide.with(itemView)
                     .load(meal.getMealPhoto())
                     .into(image);
-            addToFavoriteIcon.setOnClickListener(V -> {
-                listener.addMealToFavorite(meal);
-            });
+            addToFavoriteIcon.setOnClickListener(V ->
+                    listener.addMealToFavorite(meal));
+
+
         }
     }
-
-
 }
