@@ -75,10 +75,11 @@ public class MealAdapter extends
             Glide.with(itemView)
                     .load(meal.getMealPhoto())
                     .into(image);
-            addToFavoriteIcon.setOnClickListener(V ->
-                    listener.addMealToFavorite(meal));
-
-
+            addToFavoriteIcon.setOnClickListener(V -> {
+                listener.addMealToFavorite(meal);
+            });
         }
     }
+
+
 }
