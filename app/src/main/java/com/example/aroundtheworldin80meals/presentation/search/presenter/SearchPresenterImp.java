@@ -3,6 +3,7 @@ package com.example.aroundtheworldin80meals.presentation.search.presenter;
 import android.app.Application;
 
 import com.example.aroundtheworldin80meals.data.meal.MealRepository;
+import com.example.aroundtheworldin80meals.data.meal.model.Meal;
 import com.example.aroundtheworldin80meals.presentation.search.view.SearchView;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
@@ -13,6 +14,7 @@ public class SearchPresenterImp implements SearchPresenter {
     private final MealRepository repository;
     private final SearchView view;
     private final CompositeDisposable disposable = new CompositeDisposable();
+
 
     public SearchPresenterImp(Application application, SearchView view) {
         this.repository = new MealRepository(application);
@@ -127,6 +129,22 @@ public class SearchPresenterImp implements SearchPresenter {
                                 error -> view.showError("No meals found")
                         )
         );
+    }
+
+    @Override
+    public void addMealToFavorite(Meal meal) {
+        repository.addMealToFavorite(meal)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        () -> {
+                            view.hideLoading();
+                        },
+                        Throwable -> {
+                            view.hideLoading();
+                            view.showError("error");
+                        }
+                );
     }
 
 

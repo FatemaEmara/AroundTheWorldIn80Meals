@@ -1,5 +1,7 @@
 package com.example.aroundtheworldin80meals.presentation.search.presenter;
 
+import com.example.aroundtheworldin80meals.data.meal.model.Meal;
+
 public interface SearchPresenter {
     void getCategories();
 
@@ -16,6 +18,7 @@ public interface SearchPresenter {
     void getMealDetailsById(String id);
 
     void searchMealByName(String name);
+    void addMealToFavorite(Meal meal);
 
     void onDestroy();
 }

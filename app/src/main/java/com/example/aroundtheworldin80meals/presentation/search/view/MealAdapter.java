@@ -7,7 +7,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -24,12 +23,10 @@ public class MealAdapter extends
 
     private List<Meal> meals;
     private OnMealClickListener listener;
-    private Fragment fragment;
 
-    public MealAdapter(Fragment fragment, OnMealClickListener listener) {
+    public MealAdapter(OnMealClickListener listener) {
         meals = new ArrayList<>();
         this.listener = listener;
-        this.fragment = fragment;
     }
 
     public void setMeals(List<Meal> meals) {
@@ -60,27 +57,28 @@ public class MealAdapter extends
         ImageView image;
         TextView name;
         TextView area;
+        ImageView addToFavoriteIcon;
 
         ViewHolder(View itemView) {
             super(itemView);
             image = itemView.findViewById(R.id.ivMealRecipeImage);
             name = itemView.findViewById(R.id.tvMealRecipeTitle);
             area = itemView.findViewById(R.id.tvMealRecipeArea);
-
+            addToFavoriteIcon = itemView.findViewById(R.id.ivFavoriteIcon);
 
         }
 
         void bind(Meal meal) {
             name.setText(meal.getMealName());
             area.setText(meal.getMealArea());
-            if (fragment.isAdded()) {
-                Glide.with(fragment)
-                        .load(meal.getMealPhoto())
-                        .into(image);
-            }
 
-            itemView.setOnClickListener(v ->
-                    listener.onMealClick(meal.getMealName()));
+            Glide.with(itemView)
+                    .load(meal.getMealPhoto())
+                    .into(image);
+            addToFavoriteIcon.setOnClickListener(V ->
+                    listener.addMealToFavorite(meal));
+
+
         }
     }
 }

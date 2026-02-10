@@ -11,12 +11,13 @@ import com.example.aroundtheworldin80meals.data.meal.model.Meal;
 import java.util.List;
 
 import io.reactivex.rxjava3.core.Completable;
+import io.reactivex.rxjava3.core.Flowable;
 import io.reactivex.rxjava3.core.Observable;
 
 @Dao
 public interface MealsDAO {
-    @Query("Select * from meals where isFavorite = 1")
-    Observable<List<Meal>> getFavMeals();
+    @Query("Select * from meals")
+    Flowable<List<Meal>> getFavoriteMeals();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     Completable insertFavMeal(Meal meal);
