@@ -26,7 +26,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/ivFavoriteIcon"
+            android:id="@+id/ivDeleteIcon"
             android:layout_width="36dp"
             android:layout_height="36dp"
             android:layout_margin="12dp"
@@ -34,22 +34,8 @@
             android:clickable="true"
             android:focusable="true"
             android:padding="7dp"
-            android:src="@drawable/favorite"
+            android:src="@drawable/delete"
             app:layout_constraintEnd_toEndOf="@id/ivMealRecipeImage"
-            app:layout_constraintTop_toTopOf="@id/ivMealRecipeImage"
-            app:tint="@color/colorTertiary" />
-
-        <ImageView
-            android:id="@+id/ivAddToCalendar"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:layout_margin="12dp"
-            android:background="@drawable/favourite_icon_background"
-            android:clickable="true"
-            android:focusable="true"
-            android:padding="7dp"
-            android:src="@drawable/calendar"
-            app:layout_constraintEnd_toStartOf="@id/ivFavoriteIcon"
             app:layout_constraintTop_toTopOf="@id/ivMealRecipeImage"
             app:tint="@color/colorTextPrimary" />
 

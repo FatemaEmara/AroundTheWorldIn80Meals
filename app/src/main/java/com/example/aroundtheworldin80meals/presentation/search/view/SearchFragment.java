@@ -1,5 +1,6 @@
 package com.example.aroundtheworldin80meals.presentation.search.view;
 
+import android.app.DatePickerDialog;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -28,6 +29,7 @@ import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 
@@ -67,7 +69,8 @@ public class SearchFragment extends Fragment implements OnMealClickListener, OnA
 
         ingredientsRecycler.setLayoutManager(new GridLayoutManager(getContext(), 2));
 
-        mealAdapter = new MealAdapter(this);
+        mealAdapter = new MealAdapter(
+                this);
 
         ingredientsRecycler.setAdapter(searchItemAdapter);
         presenter = new SearchPresenterImp(requireActivity().getApplication(), this);
@@ -226,7 +229,47 @@ public class SearchFragment extends Fragment implements OnMealClickListener, OnA
     @Override
     public void addMealToFavorite(Meal meal) {
         presenter.addMealToFavorite(meal);
-        Toast.makeText(getContext(), "Product added to favorites", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), "Meal added to favorites", Toast.LENGTH_SHORT).show();
 
     }
+
+    @Override
+    public void addMealToPlan(Meal meal) {
+        showDatePicker(meal);
+
+    }
+
+    @Override
+    public void deleteMealFromPlan(Meal meal) {
+    }
+
+
+    private void showDatePicker(Meal meal) {
+        Calendar calendar = Calendar.getInstance();
+
+        DatePickerDialog dialog = new DatePickerDialog(
+                requireContext(),
+                (view, year, month, dayOfMonth) -> {
+
+
+                    String date = year + "-" +
+                            String.format("%02d", month + 1) + "-" +
+                            String.format("%02d", dayOfMonth);
+
+                    meal.setDate(date);
+                    meal.setPlanned(true);
+
+                    presenter.addPlannedMeal(meal);
+                    Toast.makeText(getContext(), "Meal Planned successfully ", Toast.LENGTH_SHORT).show();
+
+
+                },
+                calendar.get(Calendar.YEAR),
+                calendar.get(Calendar.MONTH),
+                calendar.get(Calendar.DAY_OF_MONTH)
+        );
+
+        dialog.show();
+    }
+
 }

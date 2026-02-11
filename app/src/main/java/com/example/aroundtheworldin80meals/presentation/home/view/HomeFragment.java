@@ -92,19 +92,19 @@ public class HomeFragment extends Fragment
     @Override
     public void showRandomMeal(Meal meal) {
 
-        if (meal == null) return;
+        if (meal == null || !isAdded()) return;
 
         randomMealName.setText(meal.getMealName());
 
-        Glide.with(this)
+        Glide.with(requireContext())
                 .load(meal.getMealPhoto())
-                //  .placeholder(R.drawable.placeholder)
                 .into(randomMealImage);
 
         randomMealImage.setOnClickListener(v -> {
 
         });
     }
+
 
     @Override
     public void showCategories(List<Category> categories) {
@@ -142,6 +142,12 @@ public class HomeFragment extends Fragment
 
         NavHostFragment.findNavController(this)
                 .navigate(R.id.action_homeFragment_to_searchFragment, bundle);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        presenter.onDestroyView();
     }
 }
 

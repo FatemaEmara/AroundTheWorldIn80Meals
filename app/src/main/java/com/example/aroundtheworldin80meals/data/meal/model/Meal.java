@@ -19,19 +19,19 @@ public class Meal implements Parcelable {
     private int uniqueId;
     @PrimaryKey
     @NonNull
-    @ColumnInfo(name ="idMeal" )
+    @ColumnInfo(name = "idMeal")
     private Long idMeal;
     @SerializedName("strMeal")
-    @ColumnInfo(name ="mealName" )
+    @ColumnInfo(name = "mealName")
     private String mealName;
     @SerializedName("strMealThumb")
-    @ColumnInfo(name ="mealPhoto" )
+    @ColumnInfo(name = "mealPhoto")
     private String mealPhoto;
     @SerializedName("strCategory")
-    @ColumnInfo(name ="strCategory" )
+    @ColumnInfo(name = "strCategory")
     private String mealCate;
     @SerializedName("strArea")
-    @ColumnInfo(name ="mealArea" )
+    @ColumnInfo(name = "mealArea")
     private String mealArea;
     @SerializedName("strInstructions")
     private String mealInst;
@@ -39,6 +39,7 @@ public class Meal implements Parcelable {
     private String strIngredient;
     private String date;
     private boolean isFavorite;
+    @ColumnInfo(name = "isPlanned")
     private boolean isPlanned;
     @SerializedName("strIngredient1")
     private String mealIng1;
@@ -127,7 +128,7 @@ public class Meal implements Parcelable {
     }
 
     public Meal(int uniqueId, Long idMeal, String mealName, String mealPhoto, String mealCate, String mealArea, String mealInst,
-                String strYoutube, String strIngredient, String date, boolean isFavorite,
+                String strYoutube, String strIngredient, String date, boolean isFavorite, boolean isPlanned,
                 String mealIng1, String mealIng2, String mealIng3, String mealIng4, String mealIng5,
                 String mealIng6, String mealIng7, String mealIng8, String mealIng9, String mealIng10,
                 String mealIng11, String mealIng12, String mealIng13, String mealIng14, String mealIng15,
@@ -147,6 +148,8 @@ public class Meal implements Parcelable {
         this.strIngredient = strIngredient;
         this.date = date;
         this.isFavorite = isFavorite;
+        this.isPlanned = isPlanned;
+
 
         this.mealIng1 = mealIng1;
         this.mealIng2 = mealIng2;
@@ -249,6 +252,7 @@ public class Meal implements Parcelable {
         mealMeas20 = in.readString();
     }
 
+
     @Override
     public void writeToParcel(@NonNull Parcel dest, int flags) {
         dest.writeInt(uniqueId);
@@ -339,6 +343,14 @@ public class Meal implements Parcelable {
 
     public void setFavorite(boolean favorite) {
         isFavorite = favorite;
+    }
+
+    public boolean isPlanned() {
+        return isPlanned;
+    }
+
+    public void setPlanned(boolean planned) {
+        isPlanned = planned;
     }
 
     public void setUniqueId(int uniqueId) {

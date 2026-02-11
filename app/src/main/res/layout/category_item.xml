@@ -24,17 +24,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/ivFavoriteIcon"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:layout_margin="12dp"
-            android:background="@drawable/favourite_icon_background"
-            android:padding="4dp"
-            android:src="@drawable/favorite"
-            app:layout_constraintEnd_toEndOf="@id/ivRecipeImage"
-            app:layout_constraintTop_toTopOf="@id/ivRecipeImage"
-            app:tint="@color/colorTertiary" />
 
         <TextView
             android:id="@+id/tvRecipeTitle"

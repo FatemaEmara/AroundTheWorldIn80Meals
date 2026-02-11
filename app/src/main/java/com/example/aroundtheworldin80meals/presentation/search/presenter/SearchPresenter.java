@@ -20,5 +20,6 @@ public interface SearchPresenter {
     void searchMealByName(String name);
     void addMealToFavorite(Meal meal);
 
+    void addPlannedMeal(Meal meal);
     void onDestroy();
 }

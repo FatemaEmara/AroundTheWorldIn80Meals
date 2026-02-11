@@ -17,7 +17,6 @@ import java.util.List;
 
 import io.reactivex.rxjava3.core.Completable;
 import io.reactivex.rxjava3.core.Flowable;
-import io.reactivex.rxjava3.core.Observable;
 import io.reactivex.rxjava3.core.Single;
 
 public class MealRepository {
@@ -97,14 +96,21 @@ public class MealRepository {
         return mealsLocalDataSource.getFavoriteMeals();
     }
 
+
     public Completable addPlannedMeal(Meal meal) {
-        return mealsLocalDataSource.insertPlannedMeal(meal);
+        return mealsLocalDataSource.upsertMeal(meal)
+                .andThen(
+                        mealsLocalDataSource.markMealPlanned(
+                                meal.getIdMeal(),
+                                meal.getDate()
+                        )
+                );
     }
 
     public Completable deletePlannedMeal(Meal meal) {
-        return mealsLocalDataSource.deletePlannedMeal(meal);
-
+        return mealsLocalDataSource.unPlanMeal(meal.getIdMeal());
     }
+
 
     public Flowable<List<Meal>> getPlannedMeals(String date) {
         return mealsLocalDataSource.getPlannedMeals(date);

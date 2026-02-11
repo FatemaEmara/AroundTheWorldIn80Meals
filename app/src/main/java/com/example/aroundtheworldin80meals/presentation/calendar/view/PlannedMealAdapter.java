@@ -12,20 +12,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.aroundtheworldin80meals.R;
 import com.example.aroundtheworldin80meals.data.meal.model.Meal;
-import com.example.aroundtheworldin80meals.presentation.search.view.OnMealClickListener;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import io.reactivex.rxjava3.annotations.NonNull;
 
-public class MealAdapter extends
-        RecyclerView.Adapter<MealAdapter.ViewHolder> {
+public class PlannedMealAdapter extends
+        RecyclerView.Adapter<com.example.aroundtheworldin80meals.presentation.calendar.view.PlannedMealAdapter.ViewHolder> {
 
     private List<Meal> meals;
-    private OnMealClickListener listener;
+    private OnPlannedMealClickListener listener;
 
-    public MealAdapter(OnMealClickListener listener) {
+    public PlannedMealAdapter(OnPlannedMealClickListener listener) {
         meals = new ArrayList<>();
         this.listener = listener;
     }
@@ -37,14 +36,14 @@ public class MealAdapter extends
 
     @NonNull
     @Override
-    public MealAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public com.example.aroundtheworldin80meals.presentation.calendar.view.PlannedMealAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.recipe_item, parent, false);
-        return new ViewHolder(view);
+                .inflate(R.layout.recipe_item_with_del, parent, false);
+        return new com.example.aroundtheworldin80meals.presentation.calendar.view.PlannedMealAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MealAdapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull com.example.aroundtheworldin80meals.presentation.calendar.view.PlannedMealAdapter.ViewHolder holder, int position) {
         Meal meal = meals.get(position);
         holder.bind(meal);
     }
@@ -58,14 +57,14 @@ public class MealAdapter extends
         ImageView image;
         TextView name;
         TextView area;
-        ImageView addToFavoriteIcon;
+        ImageView delPlannedMeal;
 
         ViewHolder(View itemView) {
             super(itemView);
             image = itemView.findViewById(R.id.ivMealRecipeImage);
             name = itemView.findViewById(R.id.tvMealRecipeTitle);
             area = itemView.findViewById(R.id.tvMealRecipeArea);
-            addToFavoriteIcon = itemView.findViewById(R.id.ivFavoriteIcon);
+            delPlannedMeal = itemView.findViewById(R.id.ivDeleteIcon);
 
         }
 
@@ -76,10 +75,9 @@ public class MealAdapter extends
             Glide.with(itemView)
                     .load(meal.getMealPhoto())
                     .into(image);
-            addToFavoriteIcon.setOnClickListener(V ->
-                    listener.addMealToFavorite(meal));
 
-
+            delPlannedMeal.setOnClickListener(v ->
+                    listener.onDeleteClick(meal));
         }
     }
 }

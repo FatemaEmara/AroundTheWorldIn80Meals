@@ -24,11 +24,18 @@ public interface MealDao {
     @Query("DELETE FROM meals WHERE idMeal = :idMeal  AND isFavorite = 1")
     Completable deleteFavMealById(long idMeal);
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    Completable insertPlannedMeal(Meal meal);
+    @Query("UPDATE meals SET isPlanned = 0, date = NULL WHERE idMeal = :idMeal")
+    Completable unPlanMeal(long idMeal);
 
-    @Query("SELECT * FROM meals WHERE date = :date")
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    Completable upsertMeal(Meal meal);
+
+    @Query("UPDATE meals SET isPlanned = 1, date = :date WHERE idMeal = :idMeal")
+    Completable planMeal(long idMeal, String date);
+
+    @Query("SELECT * FROM meals WHERE isPlanned = 1 AND date = :date")
     Flowable<List<Meal>> getPlannedMealsByDate(String date);
+
 
     @Query("DELETE FROM meals WHERE idMeal = :idMeal AND date = :date")
     Completable deletePlannedMealById(long idMeal, String date);
