@@ -58,6 +58,7 @@ public class MealAdapter extends
         TextView name;
         TextView area;
         ImageView addToFavoriteIcon;
+        ImageView planMealIcon;
 
         ViewHolder(View itemView) {
             super(itemView);
@@ -65,6 +66,7 @@ public class MealAdapter extends
             name = itemView.findViewById(R.id.tvMealRecipeTitle);
             area = itemView.findViewById(R.id.tvMealRecipeArea);
             addToFavoriteIcon = itemView.findViewById(R.id.ivFavoriteIcon);
+            planMealIcon = itemView.findViewById(R.id.ivAddToCalendar);
 
         }
 
@@ -76,8 +78,14 @@ public class MealAdapter extends
                     .load(meal.getMealPhoto())
                     .into(image);
             addToFavoriteIcon.setOnClickListener(V -> {
+                meal.setFavorite(true);
                 listener.addMealToFavorite(meal);
             });
+            planMealIcon.setOnClickListener(
+                    V -> {
+                        listener.addMealToPlan(meal);
+                    }
+            );
         }
     }
 

@@ -4,4 +4,5 @@ public interface HomePresenter {
     void getRandomMeal();
     void getCategories();
     void getAreas();
+    void onDestroyView();
 }

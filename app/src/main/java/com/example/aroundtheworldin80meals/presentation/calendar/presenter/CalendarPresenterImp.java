@@ -5,8 +5,6 @@ import android.app.Application;
 import com.example.aroundtheworldin80meals.data.meal.MealRepository;
 import com.example.aroundtheworldin80meals.data.meal.model.Meal;
 import com.example.aroundtheworldin80meals.presentation.calendar.view.CalendarView;
-import com.example.aroundtheworldin80meals.presentation.favorite.presenter.FavoritesPresenter;
-import com.example.aroundtheworldin80meals.presentation.favorite.view.FavoriteView;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
 import io.reactivex.rxjava3.disposables.CompositeDisposable;
@@ -26,19 +24,45 @@ public class CalendarPresenterImp implements CalendarPresenter {
     }
 
     @Override
-    public void getPlannedMeals() {
+    public void getPlannedMeals(String date) {
 
+        disposable.add(
+                mealRepository.getPlannedMeals(date)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(
+                                calendarView::showPlannedMeals,
+                                throwable -> {
+                                }
+                        )
+        );
 
     }
 
     @Override
-    public void deleteFromPlannedMeals(Meal meal) {
+    public void deleteFromPlannedMeals(String date, Meal meal) {
+        disposable.add(
+                mealRepository.deletePlannedMeal(meal)
+                        .subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(
+                                () -> {
 
+                                    calendarView.onPlannedMealDeleted();
+                                    getPlannedMeals(date);
+
+                                },
+                                throwable -> {
+                                }
+                        )
+        );
     }
 
     @Override
     public void onDestroy() {
 
+        disposable.dispose();
     }
+
 
 }

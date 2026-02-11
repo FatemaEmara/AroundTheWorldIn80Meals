@@ -22,14 +22,14 @@ public class FavoritePresenterImp implements FavoritesPresenter {
         this.favoriteView = favoriteView;
     }
 
+
+
     @Override
     public void getFavoriteMeals() {
-
         mealRepository.getFavoriteMeals().subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(response ->
                         favoriteView.showFavoriteMeals(response));
-
     }
 
     @Override

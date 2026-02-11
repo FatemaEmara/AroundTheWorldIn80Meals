@@ -6,11 +6,14 @@ import com.example.aroundtheworldin80meals.data.meal.MealRepository;
 import com.example.aroundtheworldin80meals.presentation.home.view.HomeView;
 
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
+import io.reactivex.rxjava3.disposables.CompositeDisposable;
 import io.reactivex.rxjava3.schedulers.Schedulers;
 
-public class HomePresenterImpl implements HomePresenter  {
+public class HomePresenterImpl implements HomePresenter {
     private final MealRepository repository;
     private final HomeView view;
+    private CompositeDisposable disposable = new CompositeDisposable();
+
     public HomePresenterImpl(Application application, HomeView view) {
         this.repository = new MealRepository(application);
         this.view = view;
@@ -24,11 +27,11 @@ public class HomePresenterImpl implements HomePresenter  {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         meal -> {
-                         //   view.hideLoading();
+                            //   view.hideLoading();
                             view.showRandomMeal(meal);
                         },
                         error -> {
-                          //  view.hideLoading();
+                            //  view.hideLoading();
                             view.showError("Failed to load random meal");
                         }
                 );
@@ -53,6 +56,15 @@ public class HomePresenterImpl implements HomePresenter  {
                 .subscribe(
                         view::showAreas,
                         error -> view.showError("Failed to load areas")
+
                 );
     }
+
+    @Override
+    public void onDestroyView() {
+        disposable.clear();
+
+    }
+
+
 }

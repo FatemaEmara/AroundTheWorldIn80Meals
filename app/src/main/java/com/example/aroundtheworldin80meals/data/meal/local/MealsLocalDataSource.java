@@ -2,12 +2,8 @@ package com.example.aroundtheworldin80meals.data.meal.local;
 
 import android.content.Context;
 
-import androidx.room.Insert;
-import androidx.room.OnConflictStrategy;
-import androidx.room.Query;
-
-import com.example.aroundtheworldin80meals.data.db.MealsDatabase;
 import com.example.aroundtheworldin80meals.data.db.MealDao;
+import com.example.aroundtheworldin80meals.data.db.MealsDatabase;
 import com.example.aroundtheworldin80meals.data.meal.model.Meal;
 
 import java.util.List;
@@ -43,14 +39,27 @@ public class MealsLocalDataSource {
         return mealsDAO.getPlannedMealsByDate(date);
     }
 
-    public Completable insertPlannedMeal(Meal meal) {
-        return mealsDAO.insertPlannedMeal(meal);
-
-    }
+//    public Completable insertPlannedMeal(Meal meal) {
+//        return mealsDAO.planMeal(meal.getIdMeal(), meal.getDate());
+//
+//    }
 
     public Completable deletePlannedMeal(Meal meal) {
         return mealsDAO.deletePlannedMealById(meal.getIdMeal(), meal.getDate());
 
+    }
+
+
+    public Completable upsertMeal(Meal meal) {
+        return mealsDAO.upsertMeal(meal);
+    }
+
+    public Completable markMealPlanned(long idMeal, String date) {
+        return mealsDAO.planMeal(idMeal, date);
+    }
+
+    public Completable unPlanMeal(long idMeal) {
+        return mealsDAO.unPlanMeal(idMeal);
     }
 
 

@@ -147,6 +147,22 @@ public class SearchPresenterImp implements SearchPresenter {
                 );
     }
 
+    @Override
+    public void addPlannedMeal(Meal meal) {
+        repository.addPlannedMeal(meal)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(
+                        () -> {
+                            view.hideLoading();
+                        },
+                        Throwable -> {
+                            view.hideLoading();
+                            view.showError("error");
+                        }
+                );
+    }
+
 
     @Override
     public void onDestroy() {
