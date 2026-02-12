@@ -5,7 +5,7 @@ import com.example.aroundtheworldin80meals.data.meal.model.Meal;
 public interface OnMealClickListener {
     void addMealToFavorite(Meal meal);
     void addMealToPlan(Meal meal);
-    void deleteMealFromPlan(Meal meal);
+    void onMealClick(Meal meal);
 
 
 }

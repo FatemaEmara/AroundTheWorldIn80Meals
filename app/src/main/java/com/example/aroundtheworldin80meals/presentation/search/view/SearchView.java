@@ -31,8 +31,11 @@ public interface SearchView {
 
     void showError(String message);
 
-    void searchMealByName(List<Meal>meals);
+    void searchMealByName(List<Meal> meals);
 
+    void showGuestModeRestriction();
+    void showMealAddedToFavorites();
+    void showMealPlannedSuccess();
 
     void onDestroy();
 }

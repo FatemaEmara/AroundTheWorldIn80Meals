@@ -33,7 +33,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View v = layoutInflater.inflate(R.layout.recipe_item, parent, false);
+        View v = layoutInflater.inflate(R.layout.recipe_item_with_del, parent, false);
         ViewHolder viewHolder = new ViewHolder(v);
         return viewHolder;
     }
@@ -64,7 +64,7 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
             super(itemView);
             favMealName = itemView.findViewById(R.id.tvMealRecipeTitle);
             favMealArea = itemView.findViewById(R.id.tvMealRecipeArea);
-            removeFavBtn = itemView.findViewById(R.id.ivFavoriteIcon);
+            removeFavBtn = itemView.findViewById(R.id.ivDeleteIcon);
             favMealImg = itemView.findViewById(R.id.ivMealRecipeImage);
         }
 

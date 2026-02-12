@@ -18,8 +18,7 @@ import java.util.List;
 
 import io.reactivex.rxjava3.annotations.NonNull;
 
-public class MealAdapter extends
-        RecyclerView.Adapter<com.example.aroundtheworldin80meals.presentation.search.view.MealAdapter.ViewHolder> {
+public class MealAdapter extends RecyclerView.Adapter<com.example.aroundtheworldin80meals.presentation.search.view.MealAdapter.ViewHolder> {
 
     private List<Meal> meals;
     private OnMealClickListener listener;
@@ -37,8 +36,7 @@ public class MealAdapter extends
     @NonNull
     @Override
     public com.example.aroundtheworldin80meals.presentation.search.view.MealAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.recipe_item, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recipe_item, parent, false);
         return new com.example.aroundtheworldin80meals.presentation.search.view.MealAdapter.ViewHolder(view);
     }
 
@@ -74,18 +72,19 @@ public class MealAdapter extends
             name.setText(meal.getMealName());
             area.setText(meal.getMealArea());
 
-            Glide.with(itemView)
-                    .load(meal.getMealPhoto())
-                    .into(image);
+            Glide.with(itemView).load(meal.getMealPhoto()).into(image);
             addToFavoriteIcon.setOnClickListener(V -> {
                 meal.setFavorite(true);
                 listener.addMealToFavorite(meal);
             });
-            planMealIcon.setOnClickListener(
-                    V -> {
-                        listener.addMealToPlan(meal);
-                    }
-            );
+            planMealIcon.setOnClickListener(V -> {
+                listener.addMealToPlan(meal);
+            });
+            itemView.setOnClickListener(v -> {
+                if (listener != null) {
+                    listener.onMealClick(meal);
+                }
+            });
         }
     }
 

@@ -22,6 +22,7 @@ import com.example.aroundtheworldin80meals.data.meal.model.Area;
 import com.example.aroundtheworldin80meals.data.meal.model.Category;
 import com.example.aroundtheworldin80meals.data.meal.model.Ingredient;
 import com.example.aroundtheworldin80meals.data.meal.model.Meal;
+import com.example.aroundtheworldin80meals.presentation.mealdetails.view.MealDetailsFragment;
 import com.example.aroundtheworldin80meals.presentation.search.presenter.SearchPresenter;
 import com.example.aroundtheworldin80meals.presentation.search.presenter.SearchPresenterImp;
 import com.example.aroundtheworldin80meals.utils.FlagUtils;
@@ -121,6 +122,35 @@ public class SearchFragment extends Fragment implements OnMealClickListener, OnA
 
     }
 
+//    private OnMealClickListener mealDetailClickListener = new OnMealClickListener() {
+//        @Override
+//        public void addMealToFavorite(Meal meal) {
+//
+//        }
+//
+//        @Override
+//        public void addMealToPlan(Meal meal) {
+//
+//        }
+//
+//        @Override
+//        public void onMealClick(Meal meal) {
+//            navigateToMealDetail(meal.getIdMeal());
+//        }
+//    };
+    private void navigateToMealDetail(long mealId) {
+        Bundle bundle = new Bundle();
+        bundle.putLong("MEAL_ID", mealId);
+
+        MealDetailsFragment detailFragment = new MealDetailsFragment();
+        detailFragment.setArguments(bundle);
+
+        requireActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.nav_host, detailFragment)
+                .addToBackStack(null)
+                .commit();
+    }
     private void showSearchItems() {
         ingredientsRecycler.setLayoutManager(new GridLayoutManager(getContext(), 2));
         ingredientsRecycler.setAdapter(searchItemAdapter);
@@ -225,22 +255,40 @@ public class SearchFragment extends Fragment implements OnMealClickListener, OnA
         showMeals(meals);
     }
 
+    @Override
+    public void showGuestModeRestriction() {
+        Toast.makeText(getContext(),
+                "Please sign in to add meals to favorites or plan meals",
+                Toast.LENGTH_LONG).show();
+    }
+
+
+    @Override
+    public void showMealAddedToFavorites() {
+        Toast.makeText(getContext(), "Meal added to favorites", Toast.LENGTH_SHORT).show();
+    }
+
+
+    @Override
+    public void showMealPlannedSuccess() {
+        Toast.makeText(getContext(), "Meal planned successfully", Toast.LENGTH_SHORT).show();
+    }
 
     @Override
     public void addMealToFavorite(Meal meal) {
         presenter.addMealToFavorite(meal);
-        Toast.makeText(getContext(), "Meal added to favorites", Toast.LENGTH_SHORT).show();
 
     }
 
     @Override
     public void addMealToPlan(Meal meal) {
         showDatePicker(meal);
-
     }
 
     @Override
-    public void deleteMealFromPlan(Meal meal) {
+    public void onMealClick(Meal meal) {
+        navigateToMealDetail(meal.getIdMeal());
+
     }
 
 
@@ -250,8 +298,6 @@ public class SearchFragment extends Fragment implements OnMealClickListener, OnA
         DatePickerDialog dialog = new DatePickerDialog(
                 requireContext(),
                 (view, year, month, dayOfMonth) -> {
-
-
                     String date = year + "-" +
                             String.format("%02d", month + 1) + "-" +
                             String.format("%02d", dayOfMonth);
@@ -260,8 +306,6 @@ public class SearchFragment extends Fragment implements OnMealClickListener, OnA
                     meal.setPlanned(true);
 
                     presenter.addPlannedMeal(meal);
-                    Toast.makeText(getContext(), "Meal Planned successfully ", Toast.LENGTH_SHORT).show();
-
 
                 },
                 calendar.get(Calendar.YEAR),
@@ -271,5 +315,8 @@ public class SearchFragment extends Fragment implements OnMealClickListener, OnA
 
         dialog.show();
     }
+
+
+
 
 }
