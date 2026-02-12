@@ -1,0 +1,120 @@
+package com.example.aroundtheworldin80meals.data.meal;
+
+import android.app.Application;
+
+import com.example.aroundtheworldin80meals.data.meal.local.MealsLocalDataSource;
+import com.example.aroundtheworldin80meals.data.meal.model.Area;
+import com.example.aroundtheworldin80meals.data.meal.model.AreaResponse;
+import com.example.aroundtheworldin80meals.data.meal.model.Category;
+import com.example.aroundtheworldin80meals.data.meal.model.CategoryResponse;
+import com.example.aroundtheworldin80meals.data.meal.model.Ingredient;
+import com.example.aroundtheworldin80meals.data.meal.model.Meal;
+import com.example.aroundtheworldin80meals.data.meal.model.MealResponse;
+import com.example.aroundtheworldin80meals.data.meal.remote.MealRemoteDataSource;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import io.reactivex.rxjava3.core.Completable;
+import io.reactivex.rxjava3.core.Flowable;
+import io.reactivex.rxjava3.core.Single;
+
+public class MealRepository {
+    MealRemoteDataSource mealRemoteDataSource;
+
+    MealsLocalDataSource mealsLocalDataSource;
+
+    public MealRepository(Application application) {
+        this.mealRemoteDataSource = new MealRemoteDataSource();
+        this.mealsLocalDataSource = new MealsLocalDataSource(application);
+
+    }
+
+    public Single<Meal> getRandomMeal() {
+        return mealRemoteDataSource.getRandomMeal().map(response -> {
+            if (response.getMeals() == null || response.getMeals().isEmpty())
+                throw new RuntimeException("No meal found");
+            return response.getMeals().get(0);
+        });
+    }
+
+    public Single<List<Meal>> searchMealByName(String name) {
+        return mealRemoteDataSource.searchMealByName(name).map(response -> response.getMeals() == null ? new ArrayList<>() : response.getMeals());
+    }
+
+    public Single<Meal> getMealDetails(String id) {
+        return mealRemoteDataSource.getMealDetails(id).map(response -> response.getMeals().get(0));
+    }
+
+
+    public Single<List<Meal>> filterByCategory(String category) {
+        return mealRemoteDataSource.filterByCategory(category)
+                .map(MealResponse::getMeals);
+    }
+
+    public Single<List<Meal>> filterByArea(String area) {
+        return mealRemoteDataSource.filterByArea(area)
+                .map(MealResponse::getMeals);
+    }
+
+    public Single<List<Category>> getCategories() {
+        return mealRemoteDataSource.getCategories()
+                .map(CategoryResponse::getCategories);
+    }
+
+    public Single<List<Area>> getAreas() {
+        return mealRemoteDataSource.getAreas()
+                .map(AreaResponse::getAreas);
+    }
+
+
+    public Single<List<Ingredient>> getIngredients() {
+        return mealRemoteDataSource.getIngredients()
+                .map(response ->
+                        response.getMeals() == null
+                                ? new ArrayList<>()
+                                : response.getMeals()
+                );
+    }
+
+
+    public Single<List<Meal>> filterByMainIngredient(String ingredient) {
+        return mealRemoteDataSource.filterByIngredient(ingredient)
+                .map(MealResponse::getMeals);
+    }
+
+    public Completable addMealToFavorite(Meal meal) {
+        return mealsLocalDataSource.insertFavoriteMeal(meal);
+    }
+
+    public Completable deleteMealFromFavorite(Meal meal) {
+        return mealsLocalDataSource.deleteFavoriteMeal(meal);
+
+    }
+
+    public Flowable<List<Meal>> getFavoriteMeals() {
+        return mealsLocalDataSource.getFavoriteMeals();
+    }
+
+
+    public Completable addPlannedMeal(Meal meal) {
+        return mealsLocalDataSource.upsertMeal(meal)
+                .andThen(
+                        mealsLocalDataSource.markMealPlanned(
+                                meal.getIdMeal(),
+                                meal.getDate()
+                        )
+                );
+    }
+
+    public Completable deletePlannedMeal(Meal meal) {
+        return mealsLocalDataSource.unPlanMeal(meal.getIdMeal());
+    }
+
+
+    public Flowable<List<Meal>> getPlannedMeals(String date) {
+        return mealsLocalDataSource.getPlannedMeals(date);
+    }
+
+
+}

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
-    tools:context=".OnboardingSecondFragment">
+    tools:context=".presentation.onboarding.OnboardingSecondFragment">
 
 
     <androidx.cardview.widget.CardView
@@ -41,7 +41,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:gravity="center"
-        android:text="Discover New Flavors"
+        android:text="@string/discover_new_flavors"
         android:textColor="@color/colorTextPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,7 +57,7 @@
         android:layout_marginEnd="40dp"
         android:gravity="center"
         android:lineSpacingExtra="4dp"
-        android:text="Explore meals by country, ingredient, and category. Expand your palate"
+        android:text="@string/explore_meals_by_country_ingredient_and_category_expand_your_palate"
         android:textColor="@color/colorTextSecondary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -105,14 +105,14 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/colorPrimary"
-        android:text="Next"
+        android:text="@string/next"
         android:textColor="@color/colorOnPrimary"
         app:cornerRadius="28dp"
         app:layout_constraintBottom_toTopOf="@id/btnSkip"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    =
+
 
     <TextView
         android:id="@+id/btnSkip"
@@ -121,7 +121,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:padding="12dp"
-        android:text="Skip"
+        android:text="@string/skip"
         android:textColor="@color/colorTextSecondary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

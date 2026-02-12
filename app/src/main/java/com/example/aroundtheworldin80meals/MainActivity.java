@@ -1,14 +1,21 @@
 package com.example.aroundtheworldin80meals;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.navigation.NavController;
+import androidx.navigation.fragment.NavHostFragment;
+import androidx.navigation.ui.NavigationUI;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,5 +27,36 @@ public class MainActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+
+        NavHostFragment navHostFragment =
+                (NavHostFragment) getSupportFragmentManager()
+                        .findFragmentById(R.id.nav_host);
+
+        NavController navController = navHostFragment.getNavController();
+
+        BottomNavigationView bottomNavigation =
+                findViewById(R.id.bottomNavigation);
+
+        NavigationUI.setupWithNavController(bottomNavigation, navController);
+        navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
+            int id = destination.getId();
+
+            if (id == R.id.splashFragment ||
+                    id == R.id.onboardingFirstFragment ||
+                    id == R.id.onboardingSecondFragment ||
+                    id == R.id.onboardingThirdFragment ||
+                    id == R.id.loginFragment ||
+                    id == R.id.signUpFragment) {
+
+                bottomNavigation.setVisibility(View.GONE);
+            } else {
+                bottomNavigation.setVisibility(View.VISIBLE);
+            }
+        });
+
+
     }
+
+
 }

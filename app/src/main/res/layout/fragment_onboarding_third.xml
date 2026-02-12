@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
-    tools:context=".OnboardingThirdFragment">
+    tools:context=".presentation.onboarding.OnboardingThirdFragment">
 
 
     <androidx.cardview.widget.CardView
@@ -40,7 +40,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:gravity="center"
-        android:text="Plan Your Week"
+        android:text="@string/plan_your_week"
         android:textColor="@color/colorTextPrimary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -56,7 +56,7 @@
         android:layout_marginEnd="40dp"
         android:gravity="center"
         android:lineSpacingExtra="4dp"
-        android:text="Save Your favorites and schedule your meals with our intuitive planner."
+        android:text="@string/save_your_favorites_and_schedule_your_meals_with_our_intuitive_planner"
         android:textColor="@color/colorTextSecondary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -68,7 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@id/btnNext"
+        app:layout_constraintBottom_toTopOf="@id/btnGetStarted"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
@@ -97,7 +97,7 @@
     </LinearLayout>
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnNext"
+        android:id="@+id/btnGetStarted"
         style="@style/TextButtonCustom"
         android:layout_width="0dp"
         android:layout_height="56dp"
@@ -105,15 +105,13 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="16dp"
         android:backgroundTint="@color/colorPrimary"
-        android:text="Get Started"
+        android:text="@string/get_started"
         android:textColor="@color/colorOnPrimary"
         app:cornerRadius="28dp"
         app:layout_constraintBottom_toBottomOf="parent"
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
-
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

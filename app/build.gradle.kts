@@ -1,5 +1,9 @@
 plugins {
     alias(libs.plugins.android.application)
+    alias(libs.plugins.navigation.safeargs)
+    alias(libs.plugins.google.gms.google.services)
+
+
 }
 
 android {
@@ -38,9 +42,34 @@ dependencies {
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+    implementation(libs.firebase.auth)
+    implementation(libs.credentials)
+    implementation(libs.credentials.play.services.auth)
+    implementation(libs.googleid)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
     implementation(libs.lottie)
+    implementation(libs.retrofit)
+    implementation(libs.converter.gson)
+
+    implementation(libs.glide)
+
+    implementation(libs.room.runtime)
+    annotationProcessor(libs.room.compiler)
+    implementation("io.reactivex.rxjava3:rxjava:3.1.12")
+    implementation("io.reactivex.rxjava3:rxandroid:3.0.2")
+    implementation("com.github.akarnokd:rxjava3-retrofit-adapter:3.0.0")
+    implementation("androidx.room:room-rxjava3:2.8.4")
+    implementation(libs.navigation.fragment)
+    implementation(libs.navigation.ui)
+    implementation(libs.core)
+    implementation(platform("com.google.firebase:firebase-bom:34.9.0"))
+
+    implementation("com.google.firebase:firebase-auth")
+
+    implementation ("com.google.firebase:firebase-firestore")
+
+    implementation("com.google.android.gms:play-services-auth:21.0.0")
 
 }
