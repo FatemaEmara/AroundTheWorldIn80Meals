@@ -2,6 +2,7 @@ package com.example.aroundtheworldin80meals.presentation.search.presenter;
 
 import android.app.Application;
 
+import com.example.aroundtheworldin80meals.data.auth.AuthRepository;
 import com.example.aroundtheworldin80meals.data.meal.MealRepository;
 import com.example.aroundtheworldin80meals.data.meal.model.Meal;
 import com.example.aroundtheworldin80meals.presentation.search.view.SearchView;
@@ -14,10 +15,12 @@ public class SearchPresenterImp implements SearchPresenter {
     private final MealRepository repository;
     private final SearchView view;
     private final CompositeDisposable disposable = new CompositeDisposable();
+    private final AuthRepository authRepository;
 
 
     public SearchPresenterImp(Application application, SearchView view) {
         this.repository = new MealRepository(application);
+        this.authRepository = new AuthRepository(application);
         this.view = view;
     }
 
@@ -133,32 +136,43 @@ public class SearchPresenterImp implements SearchPresenter {
 
     @Override
     public void addMealToFavorite(Meal meal) {
+        if (authRepository.isGuestMode()) {
+            view.showGuestModeRestriction();
+            return;
+        }
         repository.addMealToFavorite(meal)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         () -> {
                             view.hideLoading();
+                            view.showMealAddedToFavorites();
                         },
                         Throwable -> {
                             view.hideLoading();
-                            view.showError("error");
+
+                            view.showError("Failed to add meal to favorites");
                         }
                 );
     }
 
     @Override
     public void addPlannedMeal(Meal meal) {
+        if (authRepository.isGuestMode()) {
+            view.showGuestModeRestriction();
+            return;
+        }
         repository.addPlannedMeal(meal)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(
                         () -> {
                             view.hideLoading();
+                            view.showMealPlannedSuccess();
                         },
                         Throwable -> {
                             view.hideLoading();
-                            view.showError("error");
+                            view.showError("Failed to plan meal");
                         }
                 );
     }

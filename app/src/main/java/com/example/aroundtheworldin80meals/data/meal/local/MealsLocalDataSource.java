@@ -39,16 +39,6 @@ public class MealsLocalDataSource {
         return mealsDAO.getPlannedMealsByDate(date);
     }
 
-//    public Completable insertPlannedMeal(Meal meal) {
-//        return mealsDAO.planMeal(meal.getIdMeal(), meal.getDate());
-//
-//    }
-
-    public Completable deletePlannedMeal(Meal meal) {
-        return mealsDAO.deletePlannedMealById(meal.getIdMeal(), meal.getDate());
-
-    }
-
 
     public Completable upsertMeal(Meal meal) {
         return mealsDAO.upsertMeal(meal);

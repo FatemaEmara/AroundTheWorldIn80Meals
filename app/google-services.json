@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1074822595591",
+    "project_id": "aroundtheworldin80meals-7b363",
+    "storage_bucket": "aroundtheworldin80meals-7b363.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1074822595591:android:57f73c1852354f6bd816a2",
+        "android_client_info": {
+          "package_name": "com.example.aroundtheworldin80meals"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1074822595591-csbpq0ug37onkegse57210esflfru6n2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.aroundtheworldin80meals",
+            "certificate_hash": "6e6fc8c4bd8e319c87f3c7404b801f84046cd207"
+          }
+        },
+        {
+          "client_id": "1074822595591-ph2k07qjegv4ge4k6g399gac99bqba4l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFADVBaq9ceU14dZPtp6i4gjCqQxCo5nQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1074822595591-ph2k07qjegv4ge4k6g399gac99bqba4l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
